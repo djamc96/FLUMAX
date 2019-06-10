@@ -11,12 +11,24 @@ package Variaveis;
  */
 public class grafo {
         
-    public int      mGrafo [][];
-    public String   nCidades [];
+    public  int     mGrafo [][];
+    public  String  nCidades [];
+    private int     tam;    
 
     public grafo(int tam) {
         this.mGrafo = new int[tam][tam];
         this.nCidades = new String[tam];
+        this.tam = tam;
     }
+
+    public int getTam() {
+        return tam;
+    }
+
+    public void setTam(int tam) {
+        this.tam = tam;
+    }
+    
+    
     
 }

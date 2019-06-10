@@ -19,19 +19,21 @@ import javax.swing.JOptionPane;
  */
 public class leitura {
     
-    public void lerArquivo(String caminho) throws FileNotFoundException{
+    public boolean lerArquivo(String caminho, grafo var) throws FileNotFoundException{
         File arquivo = new File(caminho);
+        boolean validador = false;
         String linha, vetor[];
         int nGrafo, c1, c2, peso;
         try{
             if(!arquivo.exists()){
                 JOptionPane.showMessageDialog(null, "Arquivo inexitente", "Erro de leitura", JOptionPane.ERROR_MESSAGE);
+                validador = false;
             }else{
                 FileReader fr = new FileReader(arquivo);
                 BufferedReader br = new BufferedReader(fr);
                 linha = br.readLine();
                 nGrafo = Integer.parseInt(linha);
-                grafo var = new grafo(nGrafo);
+                var = new grafo(nGrafo);
                 for(int i = 0; i < nGrafo; i++){
                     var.nCidades[i] = br.readLine();
                 }
@@ -46,9 +48,11 @@ public class leitura {
                 }
                 br.close();
                 fr.close();
+                validador = true;
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        return validador;
     }
 }
