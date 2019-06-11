@@ -35,7 +35,20 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtCidades = new javax.swing.JTextField();
+        Base = new javax.swing.JPanel();
+        CarregarTxt = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtCaminho = new javax.swing.JTextField();
+        btnCaminho = new javax.swing.JButton();
+        btnNext1 = new javax.swing.JButton();
+        EscCidades = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtCidades = new javax.swing.JTextArea();
+        CBcidade1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        CBcidade2 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        btnNext2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -105,9 +118,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        Base.add(CarregarTxt, "card3");
+        Base.add(CarregarTxt, "CarTxt");
 
-        txtCidades.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        txtCidades.setColumns(20);
+        txtCidades.setRows(5);
         jScrollPane1.setViewportView(txtCidades);
 
         CBcidade1.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
@@ -170,7 +184,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        Base.add(EscCidades, "card3");
+        Base.add(EscCidades, "DefCidades");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,7 +203,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         CardLayout card = (CardLayout) Base.getLayout();
-        card.show(Base, "CarregarTxt");
+        card.show(Base, "CarTxt");
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCaminhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaminhoActionPerformed
@@ -206,9 +220,11 @@ public class Principal extends javax.swing.JFrame {
         grafo var = null;
         leitura cartxt = new leitura();
         try {
-            if(cartxt.lerArquivo(txtCaminho.getText(), var)){
+            if((var = cartxt.lerArquivo(txtCaminho.getText())) != null){
+                ControleTela ct = new ControleTela();
+                ct.preencherCampor1(this, var);
                 CardLayout card = (CardLayout) Base.getLayout();
-                card.show(Base, "EscCidades");
+                card.show(Base, "DefCidades");
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,19 +267,19 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static final javax.swing.JPanel Base = new javax.swing.JPanel();
-    public static final javax.swing.JComboBox<String> CBcidade1 = new javax.swing.JComboBox<>();
-    public static final javax.swing.JComboBox<String> CBcidade2 = new javax.swing.JComboBox<>();
-    public static final javax.swing.JPanel CarregarTxt = new javax.swing.JPanel();
-    public static final javax.swing.JPanel EscCidades = new javax.swing.JPanel();
-    public static final javax.swing.JButton btnCaminho = new javax.swing.JButton();
-    public static final javax.swing.JButton btnNext1 = new javax.swing.JButton();
-    public static final javax.swing.JButton btnNext2 = new javax.swing.JButton();
-    public static final javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
-    public static final javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
-    public static final javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
-    public static final javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-    public static final javax.swing.JTextField txtCaminho = new javax.swing.JTextField();
-    public static javax.swing.JTextField txtCidades;
+    public javax.swing.JPanel Base;
+    public javax.swing.JComboBox<String> CBcidade1;
+    public javax.swing.JComboBox<String> CBcidade2;
+    public javax.swing.JPanel CarregarTxt;
+    public javax.swing.JPanel EscCidades;
+    public javax.swing.JButton btnCaminho;
+    public javax.swing.JButton btnNext1;
+    public javax.swing.JButton btnNext2;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTextField txtCaminho;
+    public javax.swing.JTextArea txtCidades;
     // End of variables declaration//GEN-END:variables
 }
