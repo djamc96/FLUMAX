@@ -14,11 +14,13 @@ public class grafo {
     public  int     mGrafo [][];
     public  String  nCidades [];
     private int     tam;    
+    public  String  txtAres;
 
     public grafo(int tam) {
         this.mGrafo = new int[tam][tam];
         this.nCidades = new String[tam];
         this.tam = tam;
+        this.txtAres = "";
     }
 
     public int getTam() {

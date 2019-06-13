@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoes;
+package FordFulkerson;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -49,8 +49,9 @@ public class MaxFlow
        //se chegar até o terminal pela BFS saindo da fonte então returna verdadeiro, senão retorna falso
         return (visitado[t] == true); 
     }  
+    
      //retorna o valor máximo do fluxo da fonte s até o terminal t dado um grafo qualquer
-    int fordFulkerson(int grafo[][], int s, int t) 
+    public int fordFulkerson(int grafo[][], int s, int t) 
     { 
         int u, v; 
          //dado as capacidades do grafo original  
@@ -100,6 +101,8 @@ public class MaxFlow
         return max_fluxo;
         
     }
+    
+    
     public void imprimir()
     {
         for(int[] rGrafo1 : rGrafo) 

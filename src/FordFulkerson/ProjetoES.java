@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoes;
+package FordFulkerson;
 
 import java.util.LinkedList;
 
@@ -66,25 +66,14 @@ public class ProjetoES
         int fluxo_max=m.fordFulkerson(Grafo, vertice_saida, vertice_chegada);
         System.out.println("\nO fluxo máximo possível é: "+fluxo_max+" "+"Saindo de: "+vertice_saida+" "+"Chegando em: "+vertice_chegada); 
         //m.imprimir();
-        int indice=0;
-        for(int x=0;x<6;x++)
-        {
-            if(x!=vertice_chegada&&x!=vertice_saida)
-            {
-                int flux= m.fordFulkerson(Grafo, vertice_saida, x);
-                System.out.println("\nOutro possivel fluxo é: "+flux+" "+"Saindo de: "+vertice_saida+" "+"Chegando em: "+x); 
-                fluxos_max[indice]=flux;
-                indice++;
-            }
-            
-        }
-        for(int y=0;y<fluxos_max.length;y++)
+        
+        /*for(int y=0;y<fluxos_max.length;y++)
         {
             if(fluxos_max[y]>fluxo_max)
             {
                 System.out.println("Fluxo recomendado é: "+fluxos_max[y]);
             }
-        }
+        }*/
     }
     
 }

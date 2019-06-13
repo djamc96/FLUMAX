@@ -42,13 +42,14 @@ public class leitura {
                         vetor = linha.split(";");
                         c1 = Integer.parseInt(vetor[0]) - 1;
                         c2 = Integer.parseInt(vetor[1]) - 1;
-                        System.out.println(c1 + " " + c2);
+                        //System.out.println(c1 + " " + c2);
                         peso = Integer.parseInt(vetor[2]);
+                        var.txtAres += String.valueOf(c1 + 1) + " -> " + String.valueOf(c2 + 1 ) + ", peso " + String.valueOf(peso) + "\n";
                         var.mGrafo[c1][c2] = peso;
                     }
                     br.close();
                     fr.close();
-                    System.out.println("leitura de arquivo completada com sucesso, 1 cidade: " + var.nCidades[0]); 
+                    //System.out.println("leitura de arquivo completada com sucesso, 1 cidade: " + var.nCidades[0]); 
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Formato incorreto", "Erro de leitura", JOptionPane.ERROR_MESSAGE);
