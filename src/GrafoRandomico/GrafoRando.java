@@ -15,20 +15,27 @@ import java.util.Random;
 public class GrafoRando {
     
     public grafo GrafoR(int nCidades, int minTon, int maxTon, int nArestas){
-        int intervalo = maxTon - minTon;
-        int c2, peso;
+        int intervalo = maxTon - minTon + 1;
+        int c1, c2, peso;
         grafo var = new grafo(nCidades);
-        Random gCidades = new Random(nCidades - 1);
-        Random gPeso = new Random(maxTon - minTon);
+        Random gCidades = new Random();
+        Random gPeso = new Random();
+        var.txtAres = "";
         for(int i = 0; i < nCidades; i++){
-            var.nCidades[i] = String.valueOf(i) + "Cidade ";
-            c2 = gCidades.nextInt();
-            peso = gPeso.nextInt();
-            var.mGrafo[i][c2] = peso + minTon;
-            var.txtAres += String.valueOf(i + 1) + " -> " + String.valueOf(c2 + 1 ) + ", peso " + String.valueOf(peso) + "\n";
-            c2 = gCidades.nextInt();
-            peso = gPeso.nextInt();
-            var.mGrafo[i][c2] = peso + minTon;
+            for(int j = 0; j < nCidades; j++){
+                var.mGrafo[i][j] = -1;
+            }
+            var.nCidades[i] = "Cidade " + (i + 1);
+        }
+        for(int i = 0; i < nArestas; i++){
+            c1 = gCidades.nextInt(nCidades);
+            while(true){
+                c2 = gCidades.nextInt(nCidades);
+                if(c1 != c2 && var.mGrafo[c1][c2] < 0) break;
+            }
+            peso = gPeso.nextInt(intervalo) + minTon;
+            var.mGrafo[c1][c2] = peso;
+            var.txtAres += String.valueOf(c1 + 1) + " -> " + String.valueOf(c2 + 1 ) + ", peso " + String.valueOf(peso) + "\n";
             //var.txtAres += String.valueOf(i + 1) + " -> " + String.valueOf(c2 + 1 ) + ", peso " + String.valueOf(peso) + "\n";
         }
     return var;

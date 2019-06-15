@@ -15,6 +15,16 @@ public class grafo {
     public  String  nCidades [];
     private int     tam;    
     public  String  txtAres;
+    public  String  txtResul;
+    private boolean tipoGrafo;
+
+    public boolean isTipoGrafo() {
+        return tipoGrafo;
+    }
+
+    public void setTipoGrafo(boolean tipoGrafo) {
+        this.tipoGrafo = tipoGrafo;
+    }
 
     public grafo(int tam) {
         this.mGrafo = new int[tam][tam];

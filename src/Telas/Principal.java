@@ -5,6 +5,8 @@
  */
 package Telas;
 
+import FordFulkerson.MaxFlow;
+import GrafoRandomico.GrafoRando;
 import Variaveis.grafo;
 import arquivosTxt.leitura;
 import java.awt.CardLayout;
@@ -37,11 +39,6 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Base = new javax.swing.JPanel();
-        CarregarTxt = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtCaminho = new javax.swing.JTextField();
-        btnCaminho = new javax.swing.JButton();
-        btnNext1 = new javax.swing.JButton();
         EscCidades = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCidades = new javax.swing.JTextArea();
@@ -52,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
         btnNext2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
         txtArestas = new javax.swing.JTextArea();
         EntGrafo = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -69,16 +67,18 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtSolucoes = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        lCidade1 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        lCidade2 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        lFluxo = new javax.swing.JLabel();
+        lResultado = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         btnNSim = new javax.swing.JButton();
         btnNGrafo = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        CarregarTxt = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtCaminho = new javax.swing.JTextField();
+        btnCaminho = new javax.swing.JButton();
+        btnNext1 = new javax.swing.JButton();
+        RBGorientado = new javax.swing.JRadioButton();
+        RBGnorientado = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,66 +91,6 @@ public class Principal extends javax.swing.JFrame {
         });
 
         Base.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel1.setText("Caminho do arquivo");
-
-        txtCaminho.setEditable(false);
-        txtCaminho.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-
-        btnCaminho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Open-file-icon.png"))); // NOI18N
-        btnCaminho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCaminhoActionPerformed(evt);
-            }
-        });
-
-        btnNext1.setBackground(java.awt.Color.lightGray);
-        btnNext1.setFont(new java.awt.Font("DejaVu Sans", 1, 28)); // NOI18N
-        btnNext1.setText("Proximo");
-        btnNext1.setToolTipText("");
-        btnNext1.setBorder(null);
-        btnNext1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnNext1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout CarregarTxtLayout = new javax.swing.GroupLayout(CarregarTxt);
-        CarregarTxt.setLayout(CarregarTxtLayout);
-        CarregarTxtLayout.setHorizontalGroup(
-            CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CarregarTxtLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CarregarTxtLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CarregarTxtLayout.createSequentialGroup()
-                        .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(CarregarTxtLayout.createSequentialGroup()
-                                .addComponent(txtCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(78, 78, 78))))
-        );
-        CarregarTxtLayout.setVerticalGroup(
-            CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CarregarTxtLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCaminho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCaminho))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-
-        Base.add(CarregarTxt, "CarTxt");
 
         txtCidades.setColumns(20);
         txtCidades.setRows(5);
@@ -188,6 +128,7 @@ public class Principal extends javax.swing.JFrame {
 
         txtArestas.setColumns(20);
         txtArestas.setRows(5);
+        jScrollPane3.setViewportView(txtArestas);
 
         javax.swing.GroupLayout EscCidadesLayout = new javax.swing.GroupLayout(EscCidades);
         EscCidades.setLayout(EscCidadesLayout);
@@ -201,9 +142,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(EscCidadesLayout.createSequentialGroup()
                         .addGroup(EscCidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane3)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(txtArestas))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
                         .addGroup(EscCidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EscCidadesLayout.createSequentialGroup()
                                 .addGap(139, 139, 139)
@@ -214,9 +155,9 @@ public class Principal extends javax.swing.JFrame {
                                     .addGroup(EscCidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(CBcidade2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(176, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscCidadesLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(278, 278, 278)
                                 .addComponent(btnNext2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(60, 60, 60))))))
         );
@@ -227,6 +168,19 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addGroup(EscCidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EscCidadesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel15)
+                        .addGroup(EscCidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(EscCidadesLayout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(btnNext2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 27, Short.MAX_VALUE))
+                            .addGroup(EscCidadesLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3))))
+                    .addGroup(EscCidadesLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -234,21 +188,8 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(66, 66, 66)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CBcidade2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(EscCidadesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15)))
-                .addGroup(EscCidadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EscCidadesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                        .addComponent(txtArestas, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(EscCidadesLayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnNext2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(CBcidade2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         Base.add(EscCidades, "DefCidades");
@@ -266,7 +207,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setText("Valor minimo de toneladas:");
 
         SNmaxTon.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNmaxTon.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        SNmaxTon.setModel(new javax.swing.SpinnerNumberModel(2, 1, null, 1));
 
         jLabel6.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel6.setText("Valor maximo de toneladas:");
@@ -285,12 +226,17 @@ public class Principal extends javax.swing.JFrame {
 
         btnGerar.setFont(new java.awt.Font("DejaVu Sans", 1, 24)); // NOI18N
         btnGerar.setText("Gerar");
+        btnGerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel13.setText("Numero de arestas:");
 
         SNarestas.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNarestas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        SNarestas.setModel(new javax.swing.SpinnerNumberModel(2, 1, null, 1));
 
         javax.swing.GroupLayout EntGrafoLayout = new javax.swing.GroupLayout(EntGrafo);
         EntGrafo.setLayout(EntGrafoLayout);
@@ -299,7 +245,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(EntGrafoLayout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(btncarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
                 .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
             .addGroup(EntGrafoLayout.createSequentialGroup()
@@ -309,7 +255,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(EntGrafoLayout.createSequentialGroup()
-                        .addGroup(EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(EntGrafoLayout.createSequentialGroup()
                                 .addGroup(EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -322,15 +268,17 @@ public class Principal extends javax.swing.JFrame {
                                         .addComponent(SNminTon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(SNarestas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(SNcidades, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(EntGrafoLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(137, Short.MAX_VALUE))))
         );
         EntGrafoLayout.setVerticalGroup(
             EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EntGrafoLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel7)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SNcidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -346,7 +294,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SNarestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(EntGrafoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -362,23 +310,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("DejaVu Sans", 1, 48)); // NOI18N
         jLabel8.setText("Resultados");
 
-        jLabel9.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel9.setText("O fluxo máximo entre a cidade");
-
-        lCidade1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        lCidade1.setText("  ");
-
-        jLabel10.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel10.setText("e");
-
-        lCidade2.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        lCidade2.setText("  ");
-
-        jLabel11.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel11.setText("é");
-
-        lFluxo.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        lFluxo.setText(" ");
+        lResultado.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        lResultado.setText("Resul");
 
         jLabel12.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel12.setText("Outras possiveis soluções:");
@@ -430,18 +363,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(32, 32, 32))
                     .addGroup(ResultadoLayout.createSequentialGroup()
                         .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ResultadoLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lCidade1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel10)
-                                .addGap(12, 12, 12)
-                                .addComponent(lCidade2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lFluxo))
+                            .addComponent(lResultado)
                             .addComponent(jLabel12))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -451,13 +373,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addGap(43, 43, 43)
-                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(lCidade1)
-                    .addComponent(jLabel10)
-                    .addComponent(lCidade2)
-                    .addComponent(jLabel11)
-                    .addComponent(lFluxo))
+                .addComponent(lResultado)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -471,6 +387,93 @@ public class Principal extends javax.swing.JFrame {
         );
 
         Base.add(Resultado, "resultados");
+
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabel1.setText("Caminho do arquivo");
+
+        txtCaminho.setEditable(false);
+        txtCaminho.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+
+        btnCaminho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/Open-file-icon.png"))); // NOI18N
+        btnCaminho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaminhoActionPerformed(evt);
+            }
+        });
+
+        btnNext1.setBackground(java.awt.Color.lightGray);
+        btnNext1.setFont(new java.awt.Font("DejaVu Sans", 1, 28)); // NOI18N
+        btnNext1.setText("Proximo");
+        btnNext1.setToolTipText("");
+        btnNext1.setBorder(null);
+        btnNext1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNext1ActionPerformed(evt);
+            }
+        });
+
+        RBGorientado.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        RBGorientado.setText("Grafo Orientado");
+        RBGorientado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBGorientadoActionPerformed(evt);
+            }
+        });
+
+        RBGnorientado.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        RBGnorientado.setText("Grafo não Orietado");
+        RBGnorientado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBGnorientadoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CarregarTxtLayout = new javax.swing.GroupLayout(CarregarTxt);
+        CarregarTxt.setLayout(CarregarTxtLayout);
+        CarregarTxtLayout.setHorizontalGroup(
+            CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CarregarTxtLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CarregarTxtLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(CarregarTxtLayout.createSequentialGroup()
+                                .addComponent(txtCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(btnCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(78, 78, 78))
+                    .addGroup(CarregarTxtLayout.createSequentialGroup()
+                        .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(CarregarTxtLayout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(RBGorientado)
+                                .addGap(190, 190, 190)
+                                .addComponent(RBGnorientado)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        CarregarTxtLayout.setVerticalGroup(
+            CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CarregarTxtLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCaminho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RBGorientado)
+                    .addComponent(RBGnorientado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
+
+        Base.add(CarregarTxt, "CarTxt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -537,9 +540,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
         if(this.CBcidade1.getSelectedIndex() != this.CBcidade2.getSelectedIndex()){
-            this.lCidade1.setText(var.nCidades[this.CBcidade1.getSelectedIndex()]);
-            this.lCidade2.setText(var.nCidades[this.CBcidade2.getSelectedIndex()]);
-            this.lFluxo.setText(String.valueOf(var.mGrafo[this.CBcidade1.getSelectedIndex()][this.CBcidade2.getSelectedIndex()]));
+            if(var.mGrafo[this.CBcidade1.getSelectedIndex()][this.CBcidade2.getSelectedIndex()] < 0){
+                JOptionPane.showMessageDialog(null, "Não possui rota entre essas cidades", "Alerta", JOptionPane.WARNING_MESSAGE);
+                var.txtResul = "Não possui rota entre essas cidades, tente outra rota";
+            }else{
+                MaxFlow m = new MaxFlow(var.getTam());
+                var.txtResul = "O fluxo maximo entre " + var.nCidades[this.CBcidade1.getSelectedIndex()] + " e " + 
+                                var.nCidades[this.CBcidade2.getSelectedIndex()] + " é " + 
+                                m.fordFulkerson(var.mGrafo, this.CBcidade1.getSelectedIndex(), this.CBcidade2.getSelectedIndex()) + " toneladas.";
+            }
             ControleTela ct = new ControleTela();
             ct.sugestoes(this, var, this.CBcidade1.getSelectedIndex(), this.CBcidade2.getSelectedIndex());
             CardLayout card = (CardLayout) Base.getLayout();
@@ -548,6 +557,32 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cidade de saida é a mesma de chegada", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnNext2ActionPerformed
+
+    private void RBGorientadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBGorientadoActionPerformed
+
+    }//GEN-LAST:event_RBGorientadoActionPerformed
+
+    private void RBGnorientadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBGnorientadoActionPerformed
+
+    }//GEN-LAST:event_RBGnorientadoActionPerformed
+
+    private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
+        if((int) this.SNarestas.getValue() >= (int) this.SNcidades.getValue()){
+            if((int) this.SNmaxTon.getValue() > (int) this.SNminTon.getValue()){
+                GrafoRando gr = new GrafoRando();
+                ControleTela ct = new ControleTela();
+                var = gr.GrafoR((int) this.SNcidades.getValue(),(int) this.SNminTon.getValue(),(int) this.SNmaxTon.getValue(),(int) this.SNarestas.getValue());
+                ct.preencherCampor1(this, var);
+                CardLayout card = (CardLayout) Base.getLayout();
+                card.show(Base, "DefCidades");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Valor de maxima de toneladas necessita ser maior que o valor minimo de toneladas.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero de arestas necessita ser maior ou igual ao número de cidades.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnGerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -591,6 +626,8 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JPanel CarregarTxt;
     public javax.swing.JPanel EntGrafo;
     public javax.swing.JPanel EscCidades;
+    public javax.swing.JRadioButton RBGnorientado;
+    public javax.swing.JRadioButton RBGorientado;
     public javax.swing.JPanel Resultado;
     public javax.swing.JSpinner SNarestas;
     public javax.swing.JSpinner SNcidades;
@@ -605,8 +642,6 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JButton btnNext2;
     public javax.swing.JButton btncarTxt;
     public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel10;
-    public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel13;
     public javax.swing.JLabel jLabel14;
@@ -618,12 +653,10 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
-    public javax.swing.JLabel jLabel9;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JLabel lCidade1;
-    public javax.swing.JLabel lCidade2;
-    public javax.swing.JLabel lFluxo;
+    public javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JLabel lResultado;
     public javax.swing.JTextArea txtArestas;
     public javax.swing.JTextField txtCaminho;
     public javax.swing.JTextArea txtCidades;

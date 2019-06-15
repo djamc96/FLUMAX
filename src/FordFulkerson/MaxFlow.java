@@ -14,11 +14,18 @@ import java.util.LinkedList;
  */
 public class MaxFlow
 {
-    public static final int V = 6; // Número de vértices do grafo
-    int rGrafo[][] = new int[V][V];
+    public  int V; // Número de vértices do grafo
+    private int rGrafo[][];
     //cria um grafo residua e preenche ele com o grafo residual
     // retorna verdadeiro se existe um caminho da fonte até o terminal
     // preenche pai[] que armazena o caminho
+
+    public MaxFlow(int V) {
+        this.V = V;
+        this.rGrafo = new int[V][V];
+    }
+    
+    
     public boolean BFS(int rGrafo[][], int s, int t, int pai[]) 
     { 
         //cria um vertice de visitados e marca todos os vertices como não visitados

@@ -54,7 +54,7 @@ public class ProjetoES
         
         // Grafo exemplo
         int Grafo[][] =new int[][] { {0, 16, 13, 0, 0, 0},{0, 0, 10, 12, 0, 0}, {0, 4, 0, 0, 14, 0},{0, 0, 9, 0, 0, 20}, {0, 0, 0, 7, 0, 4}, {0, 0, 0, 0, 0, 0}  }; 
-        MaxFlow m = new MaxFlow(); 
+        MaxFlow m = new MaxFlow(0); 
         int fluxos_max[]=new int[6];
         //System.out.println("Digite o nome do arquivo a ser lido:     ");
         //leia o grafo do .txt aqui

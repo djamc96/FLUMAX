@@ -15,8 +15,8 @@ import Variaveis.grafo;
 public class ControleTela {
     public void preencherCampor1(Principal p, grafo var){
         p.txtCidades.setText("");
-        p.CBcidade1.removeAll();
-        p.CBcidade2.removeAll();
+        p.CBcidade1.removeAllItems();
+        p.CBcidade2.removeAllItems();
         for(int i = 0; i < var.getTam(); i++){
             p.txtCidades.append(String.valueOf(i+1) + " - " + var.nCidades[i] + "\n");
             p.CBcidade1.addItem(var.nCidades[i]);
@@ -25,18 +25,19 @@ public class ControleTela {
         }
     }
     
-    public void sugestoes(Principal p, grafo var, int chegada, int saida){
-        MaxFlow m = new MaxFlow(); 
+    public void sugestoes(Principal p, grafo var, int saida, int chegada){
+        MaxFlow m = new MaxFlow(var.getTam()); 
         int flux = 0, fluxoMax = 0;
+        p.lResultado.setText(var.txtResul);
         p.txtSolucoes.setText("");
-        for(int i = 0;i < 6;i++)
+        for(int i = 0;i < var.getTam();i++)
         {
             if(i != chegada && i != saida){
                 flux = m.fordFulkerson(var.mGrafo, saida, i);
-                p.txtSolucoes.append("Outro possivel fluxo é: " + String.valueOf(flux) + " Saindo de: "+ var.nCidades[saida] + " Chegando em: " + var.nCidades[i] + "\n"); 
-                if(fluxoMax < flux) fluxoMax = flux;
+                p.txtSolucoes.append("Outro possivel fluxo é: " + String.valueOf(flux) + " toneladas, Saindo de: "+ var.nCidades[saida] + " Chegando em: " + var.nCidades[i] + "\n"); 
+                if(flux > fluxoMax) fluxoMax = flux;
             }   
         }
-        p.txtSolucoes.append("O maior fluxo possivel é " + String.valueOf(flux));
+        p.txtSolucoes.append("O maior fluxo possivel é " + String.valueOf(fluxoMax));
     }
 }
