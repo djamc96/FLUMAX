@@ -42,9 +42,9 @@ public class Principal extends javax.swing.JFrame {
         EscCidades = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCidades = new javax.swing.JTextArea();
-        CBcidade1 = new javax.swing.JComboBox<>();
+        CBcidade1 = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
-        CBcidade2 = new javax.swing.JComboBox<>();
+        CBcidade2 = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         btnNext2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -198,16 +198,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Numero de cidades:");
 
         SNcidades.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNcidades.setModel(new javax.swing.SpinnerNumberModel(2, 2, null, 1));
+        SNcidades.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(2), null, Integer.valueOf(1)));
 
         SNminTon.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNminTon.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        SNminTon.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
 
         jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel5.setText("Valor minimo de toneladas:");
 
         SNmaxTon.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNmaxTon.setModel(new javax.swing.SpinnerNumberModel(2, 1, null, 1));
+        SNmaxTon.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(1), null, Integer.valueOf(1)));
 
         jLabel6.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel6.setText("Valor maximo de toneladas:");
@@ -233,10 +233,10 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        jLabel13.setText("Numero de arestas:");
+        jLabel13.setText("Numero de rotas:        ");
 
         SNarestas.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNarestas.setModel(new javax.swing.SpinnerNumberModel(2, 1, null, 1));
+        SNarestas.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(1), null, Integer.valueOf(1)));
 
         javax.swing.GroupLayout EntGrafoLayout = new javax.swing.GroupLayout(EntGrafo);
         EntGrafo.setLayout(EntGrafoLayout);
@@ -539,18 +539,20 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btncarTxtActionPerformed
 
     private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
+        int fluxoMax = 0;
         if(this.CBcidade1.getSelectedIndex() != this.CBcidade2.getSelectedIndex()){
             if(var.mGrafo[this.CBcidade1.getSelectedIndex()][this.CBcidade2.getSelectedIndex()] < 0){
                 JOptionPane.showMessageDialog(null, "Não possui rota entre essas cidades", "Alerta", JOptionPane.WARNING_MESSAGE);
                 var.txtResul = "Não possui rota entre essas cidades, tente outra rota";
             }else{
                 MaxFlow m = new MaxFlow(var.getTam());
+                fluxoMax = m.fordFulkerson(var.mGrafo, this.CBcidade1.getSelectedIndex(), this.CBcidade2.getSelectedIndex());
                 var.txtResul = "O fluxo maximo entre " + var.nCidades[this.CBcidade1.getSelectedIndex()] + " e " + 
                                 var.nCidades[this.CBcidade2.getSelectedIndex()] + " é " + 
-                                m.fordFulkerson(var.mGrafo, this.CBcidade1.getSelectedIndex(), this.CBcidade2.getSelectedIndex()) + " toneladas.";
+                                fluxoMax + " toneladas.";
             }
             ControleTela ct = new ControleTela();
-            ct.sugestoes(this, var, this.CBcidade1.getSelectedIndex(), this.CBcidade2.getSelectedIndex());
+            ct.sugestoes(this, var, this.CBcidade1.getSelectedIndex(), this.CBcidade2.getSelectedIndex(), fluxoMax);
             CardLayout card = (CardLayout) Base.getLayout();
             card.show(Base, "resultados");
         }else{

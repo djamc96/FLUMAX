@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="FLUMAX">
+  <ClassDiagramComponents>
+    <Class name="leitura" package="arquivosTxt" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="lerArquivo" returnType="grafo" visibility="public">
+          <Argument type="String" name="caminho"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MaxFlow" package="FordFulkerson" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="V" type="int" visibility="public"/>
+        <Field name="rGrafo" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="V"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="BFS" returnType="boolean" visibility="public">
+          <Argument type="int" name="rGrafo"/>
+          <Argument type="int" name="s"/>
+          <Argument type="int" name="t"/>
+          <Argument type="int" name="pai"/>
+        </Method>
+        <Method name="fordFulkerson" returnType="int" visibility="public">
+          <Argument type="int" name="grafo"/>
+          <Argument type="int" name="s"/>
+          <Argument type="int" name="t"/>
+        </Method>
+        <Method name="imprimir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ProjetoES" package="FordFulkerson" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="grafo" package="Variaveis" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="mGrafo" type="int" visibility="public"/>
+        <Field name="nCidades" type="String" visibility="public"/>
+        <Field name="tam" type="int" visibility="private"/>
+        <Field name="txtAres" type="String" visibility="public"/>
+        <Field name="txtResul" type="String" visibility="public"/>
+        <Field name="tipoGrafo" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="tam"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isTipoGrafo" returnType="boolean" visibility="public"/>
+        <Method name="setTipoGrafo" returnType="void" visibility="public">
+          <Argument type="boolean" name="tipoGrafo"/>
+        </Method>
+        <Method name="getTam" returnType="int" visibility="public"/>
+        <Method name="setTam" returnType="void" visibility="public">
+          <Argument type="int" name="tam"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GrafoRando" package="GrafoRandomico" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="GrafoR" returnType="grafo" visibility="public">
+          <Argument type="int" name="nCidades"/>
+          <Argument type="int" name="minTon"/>
+          <Argument type="int" name="maxTon"/>
+          <Argument type="int" name="nArestas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ControleTela" package="Telas" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="preencherCampor1" returnType="void" visibility="public">
+          <Argument type="Principal" name="p"/>
+          <Argument type="grafo" name="var"/>
+        </Method>
+        <Method name="sugestoes" returnType="void" visibility="public">
+          <Argument type="Principal" name="p"/>
+          <Argument type="grafo" name="var"/>
+          <Argument type="int" name="saida"/>
+          <Argument type="int" name="chegada"/>
+          <Argument type="int" name="fm"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="Telas" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="var" type="grafo" visibility="package"/>
+        <Field name="Base" type="javax.swing.JPanel" visibility="public"/>
+        <Field name="CBcidade1" type="javax.swing.JComboBox&lt;String&gt;" visibility="public"/>
+        <Field name="CBcidade2" type="javax.swing.JComboBox&lt;String&gt;" visibility="public"/>
+        <Field name="CarregarTxt" type="javax.swing.JPanel" visibility="public"/>
+        <Field name="EntGrafo" type="javax.swing.JPanel" visibility="public"/>
+        <Field name="EscCidades" type="javax.swing.JPanel" visibility="public"/>
+        <Field name="RBGnorientado" type="javax.swing.JRadioButton" visibility="public"/>
+        <Field name="RBGorientado" type="javax.swing.JRadioButton" visibility="public"/>
+        <Field name="Resultado" type="javax.swing.JPanel" visibility="public"/>
+        <Field name="SNarestas" type="javax.swing.JSpinner" visibility="public"/>
+        <Field name="SNcidades" type="javax.swing.JSpinner" visibility="public"/>
+        <Field name="SNmaxTon" type="javax.swing.JSpinner" visibility="public"/>
+        <Field name="SNminTon" type="javax.swing.JSpinner" visibility="public"/>
+        <Field name="btnCaminho" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btnExit" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btnGerar" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btnNGrafo" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btnNSim" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btnNext1" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btnNext2" type="javax.swing.JButton" visibility="public"/>
+        <Field name="btncarTxt" type="javax.swing.JButton" visibility="public"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel12" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel13" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel14" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel15" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="public"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="public"/>
+        <Field name="jScrollPane3" type="javax.swing.JScrollPane" visibility="public"/>
+        <Field name="lResultado" type="javax.swing.JLabel" visibility="public"/>
+        <Field name="txtArestas" type="javax.swing.JTextArea" visibility="public"/>
+        <Field name="txtCaminho" type="javax.swing.JTextField" visibility="public"/>
+        <Field name="txtCidades" type="javax.swing.JTextArea" visibility="public"/>
+        <Field name="txtSolucoes" type="javax.swing.JTextArea" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="formWindowOpened" returnType="void" visibility="private">
+          <Argument type="java.awt.event.WindowEvent" name="evt"/>
+        </Method>
+        <Method name="btnCaminhoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="formWindowActivated" returnType="void" visibility="private">
+          <Argument type="java.awt.event.WindowEvent" name="evt"/>
+        </Method>
+        <Method name="btnNext1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnNSimActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnNGrafoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnExitActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btncarTxtActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnNext2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="RBGorientadoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="RBGnorientadoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnGerarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="Telas.ControleTela" target="Telas.Principal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GrafoRandomico.GrafoRando" target="Variaveis.grafo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="arquivosTxt.leitura" target="Variaveis.grafo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="var" source="Telas.Principal" target="Variaveis.grafo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -25,19 +25,27 @@ public class ControleTela {
         }
     }
     
-    public void sugestoes(Principal p, grafo var, int saida, int chegada){
+    public void sugestoes(Principal p, grafo var, int saida, int chegada, int fm){
         MaxFlow m = new MaxFlow(var.getTam()); 
-        int flux = 0, fluxoMax = 0;
+        int flux[]=new int[var.getTam()];
+        int fluxoMax = fm;
         p.lResultado.setText(var.txtResul);
         p.txtSolucoes.setText("");
         for(int i = 0;i < var.getTam();i++)
         {
             if(i != chegada && i != saida){
-                flux = m.fordFulkerson(var.mGrafo, saida, i);
-                p.txtSolucoes.append("Outro possivel fluxo é: " + String.valueOf(flux) + " toneladas, Saindo de: "+ var.nCidades[saida] + " Chegando em: " + var.nCidades[i] + "\n"); 
-                if(flux > fluxoMax) fluxoMax = flux;
+                flux[i] = m.fordFulkerson(var.mGrafo, saida, i);
+                p.txtSolucoes.append("Outro possivel fluxo é: " + String.valueOf(flux[i]) + " toneladas, Saindo de: "+ var.nCidades[saida] + " Chegando em: " + var.nCidades[i] + "\n"); 
             }   
+        }
+        for(int x=0;x< var.getTam();x++)
+        {
+            if(flux[x] > fluxoMax)
+            {
+                fluxoMax = flux[x];
+            }
         }
         p.txtSolucoes.append("O maior fluxo possivel é " + String.valueOf(fluxoMax));
     }
+        
 }
