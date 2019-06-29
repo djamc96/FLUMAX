@@ -42,9 +42,9 @@ public class Principal extends javax.swing.JFrame {
         EscCidades = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCidades = new javax.swing.JTextArea();
-        CBcidade1 = new javax.swing.JComboBox<String>();
+        CBcidade1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        CBcidade2 = new javax.swing.JComboBox<String>();
+        CBcidade2 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         btnNext2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -77,8 +77,6 @@ public class Principal extends javax.swing.JFrame {
         txtCaminho = new javax.swing.JTextField();
         btnCaminho = new javax.swing.JButton();
         btnNext1 = new javax.swing.JButton();
-        RBGorientado = new javax.swing.JRadioButton();
-        RBGnorientado = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -198,16 +196,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Numero de cidades:");
 
         SNcidades.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNcidades.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(2), null, Integer.valueOf(1)));
+        SNcidades.setModel(new javax.swing.SpinnerNumberModel(2, 2, null, 1));
 
         SNminTon.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNminTon.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        SNminTon.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel5.setText("Valor minimo de toneladas:");
 
         SNmaxTon.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNmaxTon.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(1), null, Integer.valueOf(1)));
+        SNmaxTon.setModel(new javax.swing.SpinnerNumberModel(2, 1, null, 1));
 
         jLabel6.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel6.setText("Valor maximo de toneladas:");
@@ -236,7 +234,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setText("Numero de rotas:        ");
 
         SNarestas.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
-        SNarestas.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(1), null, Integer.valueOf(1)));
+        SNarestas.setModel(new javax.swing.SpinnerNumberModel(2, 1, null, 1));
 
         javax.swing.GroupLayout EntGrafoLayout = new javax.swing.GroupLayout(EntGrafo);
         EntGrafo.setLayout(EntGrafoLayout);
@@ -413,22 +411,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        RBGorientado.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        RBGorientado.setText("Grafo Orientado");
-        RBGorientado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RBGorientadoActionPerformed(evt);
-            }
-        });
-
-        RBGnorientado.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
-        RBGnorientado.setText("Grafo não Orietado");
-        RBGnorientado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RBGnorientadoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout CarregarTxtLayout = new javax.swing.GroupLayout(CarregarTxt);
         CarregarTxt.setLayout(CarregarTxtLayout);
         CarregarTxtLayout.setHorizontalGroup(
@@ -446,13 +428,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(btnCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(78, 78, 78))
                     .addGroup(CarregarTxtLayout.createSequentialGroup()
-                        .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(CarregarTxtLayout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addComponent(RBGorientado)
-                                .addGap(190, 190, 190)
-                                .addComponent(RBGnorientado)))
+                        .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CarregarTxtLayout.setVerticalGroup(
@@ -464,11 +440,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCaminho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCaminho, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(CarregarTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RBGorientado)
-                    .addComponent(RBGnorientado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -560,14 +532,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnNext2ActionPerformed
 
-    private void RBGorientadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBGorientadoActionPerformed
-
-    }//GEN-LAST:event_RBGorientadoActionPerformed
-
-    private void RBGnorientadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBGnorientadoActionPerformed
-
-    }//GEN-LAST:event_RBGnorientadoActionPerformed
-
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
         if((int) this.SNarestas.getValue() >= (int) this.SNcidades.getValue()){
             if((int) this.SNmaxTon.getValue() > (int) this.SNminTon.getValue()){
@@ -628,8 +592,6 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JPanel CarregarTxt;
     public javax.swing.JPanel EntGrafo;
     public javax.swing.JPanel EscCidades;
-    public javax.swing.JRadioButton RBGnorientado;
-    public javax.swing.JRadioButton RBGorientado;
     public javax.swing.JPanel Resultado;
     public javax.swing.JSpinner SNarestas;
     public javax.swing.JSpinner SNcidades;
